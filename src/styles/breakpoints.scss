@@ -1,0 +1,36 @@
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+@mixin for-sm-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin for-md-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin for-lg-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin for-xl-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin for-xxl-up {
+  @media (min-width: $breakpoint-xxl) {
+    @content;
+  }
+}
