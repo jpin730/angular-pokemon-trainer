@@ -119,3 +119,24 @@ button {
     border-radius: 10px !important;
   }
 }
+
+.app-autocomplete {
+  border-radius: 10px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
+  .mat-mdc-option {
+    font-family: 'Montserrat', sans-serif;
+    @include setFontStyle($blue10, 0.875rem, 400, 1.5rem);
+    border-bottom: 1px solid $blueDark40;
+    min-height: 2.5rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $blue40 !important;
+    }
+  }
+}

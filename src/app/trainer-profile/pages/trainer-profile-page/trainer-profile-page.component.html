@@ -12,41 +12,105 @@
   <app-trainer-card>
     <div class="card-content">
       <p>Imagen perfil</p>
-      <app-image-viewer [src]="trainerProfileImage" />
+      <app-image-viewer [src]="profileImage" />
       <app-image-uploader (imageLoaded)="onLoadImage($event)" />
     </div>
   </app-trainer-card>
 
-  <form>
+  <form [formGroup]="trainerProfileForm" (ngSubmit)="submitTrainerProfile()">
     <h2>Tu información</h2>
     <p>Completa la siguiente información para completar tu perfil</p>
 
     <div class="form-controls">
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input matInput />
-        <mat-error></mat-error>
+        <input matInput formControlName="name" />
+        <mat-error />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Pasatiempo favorito</mat-label>
-        <input matInput />
-        <mat-error></mat-error>
+        <mat-chip-grid #chipGrid [formControl]="hobbyControl">
+          <mat-chip-row
+            *ngIf="hobbyControl.value.at(0) as hobby"
+            (removed)="removeHobby()"
+          >
+            {{ hobby }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input
+          matChipInputAddOnBlur
+          [formControl]="hobbyInputControl"
+          [style.display]="hobbyControl.value.at(0) && 'none'"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputFor]="chipGrid"
+          [matAutocomplete]="auto"
+          (matChipInputTokenEnd)="addHobby($event)"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          class="app-autocomplete"
+          (optionSelected)="selected($event)"
+        >
+          <mat-option
+            *ngFor="let hobby of filteredHobbies$ | async"
+            [value]="hobby"
+          >
+            {{ hobby }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error />
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field
+        appearance="outline"
+        (click)="picker.open()"
+        class="datepicker"
+      >
         <mat-label>Cumpleaños</mat-label>
-        <input matInput />
-        <mat-error></mat-error>
+        <input
+          readonly
+          matInput
+          formControlName="birthday"
+          [max]="today"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon fontSet="material-icons-outlined"
+            >calendar_today</mat-icon
+          >
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker />
+        <mat-error />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Documento</mat-label>
-        <input matInput />
-        <mat-error></mat-error>
+        <mat-label>{{
+          (isAdult$ | async)
+            ? 'DUI'
+            : birthdayControl.valid
+            ? 'Carnet de Minoridad'
+            : 'Documento'
+        }}</mat-label>
+        <input
+          matInput
+          formControlName="document"
+          [mask]="(isAdult$ | async) ? '00000000-0' : ''"
+        />
+        <mat-error />
       </mat-form-field>
     </div>
 
-    <button mat-flat-button color="primary" type="submit">Continuar</button>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="trainerProfileForm.invalid"
+    >
+      Continuar
+    </button>
   </form>
 </section>

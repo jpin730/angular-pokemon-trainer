@@ -30,12 +30,22 @@ form {
 
     & > * {
       width: 100%;
+      margin-bottom: 0.2rem;
     }
   }
 
-  button {
+  > button {
     display: block;
     margin: 0 auto;
     width: 14rem;
+  }
+
+  .datepicker {
+    cursor: pointer;
+
+    input {
+      cursor: pointer;
+      text-transform: capitalize;
+    }
   }
 }
