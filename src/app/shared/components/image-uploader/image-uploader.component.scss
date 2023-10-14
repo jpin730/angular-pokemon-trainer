@@ -1,0 +1,25 @@
+@import 'colors';
+@import 'utils';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+button {
+  align-items: center;
+  background-color: $white;
+  border-radius: 10px;
+  border: 1px dashed $blueDark40;
+  color: $blue30;
+  cursor: pointer;
+  display: flex;
+  height: 4.5rem;
+  justify-content: space-between;
+  padding: 1.5rem;
+  width: 100%;
+
+  > span {
+    @include setFontStyle($blue30, 1rem, 500, 1rem);
+  }
+}

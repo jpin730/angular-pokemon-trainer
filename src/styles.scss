@@ -1,6 +1,7 @@
 @import 'breakpoints';
 @import 'colors';
 @import 'theming';
+@import 'utils';
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,20 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -39,5 +54,68 @@ body {
 
   @include for-xxl-up {
     max-width: 1320px;
+  }
+}
+
+.headline-container {
+  display: flex;
+  margin-bottom: 3.5rem;
+
+  > button {
+    margin-top: 0.25rem;
+  }
+
+  h1 {
+    @include setFontStyle($blue10, 2rem, 600, 3.3rem);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    @include setFontStyle($gray40, 1.1rem, 400, 1.7rem);
+  }
+}
+
+.body-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1rem;
+
+  @include for-md-up {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mat-mdc-form-field {
+  .mdc-text-field__input {
+    color: $black50 !important;
+  }
+
+  .mdc-notched-outline {
+    .mdc-floating-label > mat-label {
+      letter-spacing: 0;
+    }
+
+    .mdc-floating-label--float-above > mat-label {
+      font-weight: 700;
+    }
+
+    &__leading {
+      border-bottom-left-radius: 10px !important;
+      border-top-left-radius: 10px !important;
+    }
+
+    &__trailing {
+      border-bottom-right-radius: 10px !important;
+      border-top-right-radius: 10px !important;
+    }
+  }
+
+  .mdc-button {
+    height: 3rem !important;
+    letter-spacing: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px !important;
   }
 }

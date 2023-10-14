@@ -1,0 +1,9 @@
+@import 'colors';
+
+img {
+  background-color: $blue40;
+  border-radius: 50%;
+  border: 14px solid $white;
+  display: block;
+  margin: 0 auto;
+}

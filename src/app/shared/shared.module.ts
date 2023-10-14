@@ -3,10 +3,20 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
+import { TrainerCardComponent } from './components/trainer-card/trainer-card.component';
+import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+
+const components = [
+  ImageUploaderComponent,
+  ImageViewerComponent,
+  MainLayoutComponent,
+  TrainerCardComponent,
+];
 
 @NgModule({
-  declarations: [MainLayoutComponent],
-  exports: [MainLayoutComponent],
+  declarations: [...components],
+  exports: [...components],
   imports: [CommonModule, MaterialModule, NgOptimizedImage, RouterModule],
 })
 export class SharedModule {}

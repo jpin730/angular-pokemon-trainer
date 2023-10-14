@@ -1,1 +1,52 @@
-<p>trainer-profile-page works!</p>
+<section class="headline-container">
+  <button mat-icon-button color="primary" class="back-button">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <div>
+    <h1>¡Hola! Configuremos tu perfil</h1>
+    <p>Queremos conocerte mejor.</p>
+  </div>
+</section>
+
+<section class="body-container">
+  <app-trainer-card>
+    <div class="card-content">
+      <p>Imagen perfil</p>
+      <app-image-viewer />
+      <app-image-uploader />
+    </div>
+  </app-trainer-card>
+
+  <form>
+    <h2>Tu información</h2>
+    <p>Completa la siguiente información para completar tu perfil</p>
+
+    <div class="form-controls">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pasatiempo favorito</mat-label>
+        <input matInput />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Cumpleaños</mat-label>
+        <input matInput />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Documento</mat-label>
+        <input matInput />
+        <mat-error></mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit">Continuar</button>
+  </form>
+</section>
