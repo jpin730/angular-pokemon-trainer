@@ -2,9 +2,17 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ENTER } from '@angular/cdk/keycodes';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Observable, distinctUntilChanged, map, startWith, tap } from 'rxjs';
+import {
+  Observable,
+  distinctUntilChanged,
+  map,
+  startWith,
+  take,
+  tap,
+} from 'rxjs';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { DateTime } from 'luxon';
+import { PokemonTrainerService } from 'src/app/core/services/pokemon-trainer.service';
 
 @Component({
   templateUrl: './trainer-profile-page.component.html',
@@ -12,6 +20,8 @@ import { DateTime } from 'luxon';
 })
 export class TrainerProfilePageComponent implements OnInit {
   private fb = inject(FormBuilder).nonNullable;
+  private pokemonTrainerService = inject(PokemonTrainerService);
+
   separatorKeysCodes: number[] = [ENTER];
   today = DateTime.now();
 
@@ -70,12 +80,24 @@ export class TrainerProfilePageComponent implements OnInit {
           Math.abs(birthday.diff(this.today, 'years').years) >= 18,
       ),
       distinctUntilChanged(),
-      tap(() => this.documentControl.reset()),
       tap((isAdult) =>
         isAdult
           ? this.documentControl.addValidators(Validators.required)
           : this.documentControl.removeValidators(Validators.required),
       ),
+    );
+
+    this.pokemonTrainerService.profile$.pipe(take(1)).subscribe(
+      (profile) =>
+        profile &&
+        this.trainerProfileForm.setValue(
+          {
+            ...profile,
+            birthday: DateTime.fromISO(profile.birthday),
+            hobby: [profile.hobby],
+          },
+          { emitEvent: false },
+        ),
     );
   }
 
@@ -88,11 +110,11 @@ export class TrainerProfilePageComponent implements OnInit {
 
     const formValue = this.trainerProfileForm.getRawValue();
 
-    // TODO: console.log({
-    //   ...formValue,
-    //   birthday: formValue.birthday && formValue.birthday.toFormat('yyyy-MM-dd'),
-    //   hobby: formValue.hobby.at(0),
-    // });
+    this.pokemonTrainerService.profile = {
+      ...formValue,
+      birthday: formValue.birthday && formValue.birthday.toFormat('yyyy-MM-dd'),
+      hobby: formValue.hobby.at(0) as string,
+    };
   }
 
   addHobby(event: MatChipInputEvent): void {
