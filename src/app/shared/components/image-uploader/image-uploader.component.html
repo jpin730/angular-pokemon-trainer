@@ -1,4 +1,19 @@
-<button>
-  <span>Adjunta una foto</span>
-  <mat-icon fontSet="material-icons-outlined">cloud_upload</mat-icon>
+<input
+  type="file"
+  accept="image/png, image/jpeg"
+  (change)="emitImage($event)"
+  #fileInput
+/>
+
+<button (click)="isLoaded ? clearImage() : fileInput.click()">
+  <span class="text-truncate">{{
+    isLoaded ? fileName : 'Adjunta una foto'
+  }}</span>
+
+  <mat-icon
+    fontSet="material-icons-outlined"
+    [color]="isLoaded ? 'warn' : 'primary'"
+  >
+    {{ isLoaded ? 'restore_from_trash' : 'cloud_upload' }}
+  </mat-icon>
 </button>

@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+input[type='file'] {
+  display: none;
+}
+
 button {
   align-items: center;
   background-color: $white;
@@ -21,5 +25,9 @@ button {
 
   > span {
     @include setFontStyle($blue30, 1rem, 500, 1rem);
+  }
+
+  > mat-icon {
+    flex-shrink: 0;
   }
 }

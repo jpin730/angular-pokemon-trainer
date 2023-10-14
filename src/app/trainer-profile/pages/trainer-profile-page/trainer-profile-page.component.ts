@@ -4,4 +4,10 @@ import { Component } from '@angular/core';
   templateUrl: './trainer-profile-page.component.html',
   styleUrls: ['./trainer-profile-page.component.scss'],
 })
-export class TrainerProfilePageComponent {}
+export class TrainerProfilePageComponent {
+  trainerProfileImage = '';
+
+  onLoadImage(imageURL: string) {
+    this.trainerProfileImage = imageURL;
+  }
+}

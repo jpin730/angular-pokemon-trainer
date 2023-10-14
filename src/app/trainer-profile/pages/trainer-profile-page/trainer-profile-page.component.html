@@ -12,8 +12,8 @@
   <app-trainer-card>
     <div class="card-content">
       <p>Imagen perfil</p>
-      <app-image-viewer />
-      <app-image-uploader />
+      <app-image-viewer [src]="trainerProfileImage" />
+      <app-image-uploader (imageLoaded)="onLoadImage($event)" />
     </div>
   </app-trainer-card>
 
