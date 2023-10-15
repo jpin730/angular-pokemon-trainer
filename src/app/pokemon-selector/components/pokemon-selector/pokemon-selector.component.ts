@@ -28,7 +28,7 @@ export class PokemonSelectorComponent {
       );
     }),
   );
-  disabled = false;
+  disabledCheckbox = false;
 
   onChangePokemonSelection(event: Event) {
     const { checked, value } = event.target as HTMLInputElement;
@@ -39,6 +39,7 @@ export class PokemonSelectorComponent {
       const index = this.selectedPokemons.findIndex((id) => id === +value);
       this.selectedPokemons.splice(index, 1);
     }
-    this.disabled = this.selectedPokemons.length >= 3;
+
+    this.disabledCheckbox = this.selectedPokemons.length >= 3;
   }
 }

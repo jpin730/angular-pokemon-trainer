@@ -1,0 +1,68 @@
+@import 'colors';
+@import 'utils';
+
+input {
+  display: none;
+
+  + label {
+    display: block;
+    width: 164px;
+    height: 138px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 20px;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    p {
+      display: flex;
+      justify-content: space-between;
+      background-color: $blue00;
+      box-shadow:
+        0px 2.767256498336792px 2.2138051986694336px 0px rgba(0, 0, 0, 0.0281),
+        0px 6.650102138519287px 5.32008171081543px 0px rgba(0, 0, 0, 0.0404),
+        0px 12.521552085876465px 10.017241477966309px 0px rgba(0, 0, 0, 0.05),
+        0px 22.3363094329834px 17.869047164916992px 0px rgba(0, 0, 0, 0.0596),
+        0px 41.777610778808594px 33.422088623046875px 0px rgba(0, 0, 0, 0.0719),
+        0px 100px 80px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 136px;
+      height: 26px;
+      padding: 0 16px;
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      gap: 0.5rem;
+      @include setFontStyle($white, 0.75rem, 800, 26px);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 90px;
+      background-color: $gray10;
+      position: absolute;
+      bottom: 0;
+      z-index: -100;
+      border-radius: 20px;
+    }
+  }
+
+  &:checked + label::after {
+    background-color: $orange20;
+  }
+
+  &:disabled + label {
+    opacity: 0.4;
+  }
+}

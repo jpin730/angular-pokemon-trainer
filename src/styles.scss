@@ -81,7 +81,7 @@ button {
   justify-items: center;
   gap: 1rem;
 
-  @include for-md-up {
+  @include for-lg-up {
     grid-template-columns: 1fr 1fr;
   }
 }

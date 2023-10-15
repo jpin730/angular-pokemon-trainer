@@ -7,8 +7,18 @@
   [disabled]="disabled && !selectedPokemons.includes(pokemon.id)"
   (change)="changeSelection.emit($event)"
 />
-<label [for]="pokemon.id">
-  {{ pokemon.id | number: '3.0' }}
-  {{ pokemon.name | titlecase }}
+<label [for]="pokemon.id" matRipple>
+  <img
+    [ngSrc]="pokemon.sprite"
+    [alt]="pokemon.name"
+    [width]="100"
+    [height]="100"
+  />
+
+  <p [matTooltip]="pokemon.name | titlecase">
+    <span>#{{ pokemon.id | number: '3.0' }}</span>
+    <span class="text-truncate">
+      {{ pokemon.name | titlecase }}
+    </span>
+  </p>
 </label>
-<br />

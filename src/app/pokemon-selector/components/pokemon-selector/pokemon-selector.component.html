@@ -2,8 +2,8 @@
 
 <p>Selecciona 3 Pokémon para que sean parte de tu equipo</p>
 
-<div>
-  <mat-icon>search</mat-icon>
+<div class="search-input">
+  <mat-icon color="primary">search</mat-icon>
   <input
     type="text"
     placeholder="Buscar por índice, nombre..."
@@ -13,11 +13,27 @@
 </div>
 
 <div class="pokemon-list">
-  <app-pokemon-checkbox
-    *ngFor="let pokemon of filteredPokemons$ | async"
-    [pokemon]="pokemon"
-    [disabled]="disabled"
-    [selectedPokemons]="selectedPokemons"
-    (changeSelection)="onChangePokemonSelection($event)"
-  />
+  <ng-container *ngIf="filteredPokemons$ | async as filteredPokemons">
+    <ng-container *ngIf="filteredPokemons.length > 0; else noPokemons">
+      <app-pokemon-checkbox
+        *ngFor="let pokemon of filteredPokemons"
+        [pokemon]="pokemon"
+        [disabled]="disabledCheckbox"
+        [selectedPokemons]="selectedPokemons"
+        (changeSelection)="onChangePokemonSelection($event)"
+      />
+    </ng-container>
+    <ng-template #noPokemons>
+      <p>No se encontró ningún Pokémon</p>
+    </ng-template>
+  </ng-container>
 </div>
+
+<button
+  mat-flat-button
+  color="primary"
+  type="submit"
+  [disabled]="!disabledCheckbox"
+>
+  Guardar
+</button>

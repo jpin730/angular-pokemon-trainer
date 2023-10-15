@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { PokemonSelectorRoutingModule } from './pokemon-selector-routing.module';
 import { PokemonSelectorPageComponent } from './pages/pokemon-selector-page/pokemon-selector-page.component';
@@ -25,6 +25,7 @@ import { PokemonCheckboxComponent } from './components/pokemon-checkbox/pokemon-
     SharedModule,
     NgxMaskPipe,
     ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   providers: [provideNgxMask()],
 })

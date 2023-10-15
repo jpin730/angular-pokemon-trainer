@@ -9,6 +9,8 @@ import { MatFormFieldDirective } from './directives/mat-form-field.directive';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {
   MAT_DATE_FORMATS,
@@ -42,6 +44,8 @@ export const APP_DATE_FORMATS: MatDateFormats = {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatRippleModule,
+    MatTooltipModule,
     LuxonDateModule,
   ],
   providers: [
