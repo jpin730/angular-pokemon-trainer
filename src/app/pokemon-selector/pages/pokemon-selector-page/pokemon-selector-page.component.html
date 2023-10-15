@@ -13,10 +13,27 @@
   </div>
 </section>
 
-<pre>
-    {{ profile$ | async | json }}
-</pre>
-
-<ng-container *ngIf="profile$ | async as profile">
-  <img [src]="profile.image" alt="" />
-</ng-container>
+<div class="body-container">
+  <app-trainer-card *ngIf="profile$ | async as profile">
+    <div class="card-content">
+      <h2>{{ profile.name }}</h2>
+      <app-image-viewer [src]="profile.image" />
+      <div class="bio">
+        <p>
+          <strong>Pasatiempo: </strong>
+          <span>{{ profile.hobby }}</span>
+        </p>
+        <p>
+          <strong>Edad: </strong>
+          <span>{{ profile.birthday | age }} años</span>
+        </p>
+        <p *ngIf="!!profile.document">
+          <strong>{{ isAdult ? 'DUI' : 'Carnet de Minoridad' }}: </strong>
+          <span>{{
+            profile.document | mask: (isAdult ? '00000000-0' : 'A*')
+          }}</span>
+        </p>
+      </div>
+    </div>
+  </app-trainer-card>
+</div>

@@ -8,6 +8,7 @@ import { ImageViewerComponent } from './components/image-viewer/image-viewer.com
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AgePipe } from './pipes/age.pipe';
 
 const components = [
   ImageUploaderComponent,
@@ -17,9 +18,11 @@ const components = [
   LoaderComponent,
 ];
 
+const pipes = [AgePipe];
+
 @NgModule({
-  declarations: [...components],
-  exports: [...components],
+  declarations: [...components, ...pipes],
+  exports: [...components, ...pipes],
   imports: [
     CommonModule,
     MaterialModule,

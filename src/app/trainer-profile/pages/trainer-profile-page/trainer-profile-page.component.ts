@@ -15,6 +15,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { DateTime } from 'luxon';
 import { PokemonTrainerService } from 'src/app/core/services/pokemon-trainer.service';
 import { Router } from '@angular/router';
+import { getAge } from 'src/app/core/helpers/get-age';
 
 @Component({
   templateUrl: './trainer-profile-page.component.html',
@@ -94,11 +95,7 @@ export class TrainerProfilePageComponent implements OnInit {
         }),
       ),
     ).pipe(
-      map(
-        (birthday) =>
-          birthday !== '' &&
-          Math.abs(birthday.diff(this.today, 'years').years) >= 18,
-      ),
+      map((birthday) => birthday !== '' && getAge(birthday) >= 18),
       distinctUntilChanged(),
       tap((isAdult) =>
         isAdult

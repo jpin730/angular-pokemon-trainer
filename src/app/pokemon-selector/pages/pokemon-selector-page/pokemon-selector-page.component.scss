@@ -1,0 +1,32 @@
+@import 'colors';
+@import 'utils';
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 2.5rem;
+
+  h2 {
+    @include setFontStyle($blue10, 2rem, 700, 3rem);
+    text-align: center;
+  }
+
+  .bio {
+    width: 100%;
+  }
+
+  p {
+    @include setFontStyle($grayDark, 1.5rem, 400, 2rem);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    > strong {
+      font-weight: 700;
+    }
+  }
+}
