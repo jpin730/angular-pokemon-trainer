@@ -1,0 +1,14 @@
+<input
+  type="checkbox"
+  [id]="pokemon.id"
+  [name]="pokemon.id"
+  [value]="pokemon.id"
+  [checked]="selectedPokemons.includes(pokemon.id)"
+  [disabled]="disabled && !selectedPokemons.includes(pokemon.id)"
+  (change)="changeSelection.emit($event)"
+/>
+<label [for]="pokemon.id">
+  {{ pokemon.id | number: '3.0' }}
+  {{ pokemon.name | titlecase }}
+</label>
+<br />

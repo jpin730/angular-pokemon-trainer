@@ -9,9 +9,14 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { PokemonSelectorComponent } from './components/pokemon-selector/pokemon-selector.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PokemonCheckboxComponent } from './components/pokemon-checkbox/pokemon-checkbox.component';
 
 @NgModule({
-  declarations: [PokemonSelectorPageComponent, PokemonSelectorComponent],
+  declarations: [
+    PokemonCheckboxComponent,
+    PokemonSelectorComponent,
+    PokemonSelectorPageComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,

@@ -13,20 +13,11 @@
 </div>
 
 <div class="pokemon-list">
-  <ng-container *ngFor="let pokemon of filteredPokemons$ | async">
-    <input
-      type="checkbox"
-      [id]="pokemon.id"
-      [name]="pokemon.id"
-      [value]="pokemon.id"
-      [checked]="selectedPokemons.includes(pokemon.id)"
-      [disabled]="disabled && !selectedPokemons.includes(pokemon.id)"
-      (change)="onChangePokemonSelection($event)"
-    />
-    <label [for]="pokemon.id">
-      {{ pokemon.id | number: '3.0' }}
-      {{ pokemon.name | titlecase }}
-    </label>
-    <br />
-  </ng-container>
+  <app-pokemon-checkbox
+    *ngFor="let pokemon of filteredPokemons$ | async"
+    [pokemon]="pokemon"
+    [disabled]="disabled"
+    [selectedPokemons]="selectedPokemons"
+    (changeSelection)="onChangePokemonSelection($event)"
+  />
 </div>

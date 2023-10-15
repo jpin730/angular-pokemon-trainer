@@ -15,7 +15,7 @@ export class PokemonSelectorComponent {
   filteredPokemons$ = this.searchValue.valueChanges.pipe(
     startWith(''),
     map((value) => {
-      const filterValue = value.toLowerCase();
+      const filterValue = value.trim().toLowerCase();
 
       if (!filterValue) {
         return this.pokemons;
