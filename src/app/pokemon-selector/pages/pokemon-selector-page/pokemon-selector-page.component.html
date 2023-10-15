@@ -1,1 +1,11 @@
-<p>pokemon-selector-page works!</p>
+<pre>
+    {{ profile$ | async | json }}
+</pre>
+
+<pre>
+    {{ pokemons$ | async | json }}
+</pre>
+
+<ng-container *ngIf="profile$ | async as profile">
+  <img [src]="profile.image" alt="" />
+</ng-container>

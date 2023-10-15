@@ -13,6 +13,7 @@ import {
 import { MatChipInputEvent } from '@angular/material/chips';
 import { DateTime } from 'luxon';
 import { PokemonTrainerService } from 'src/app/core/services/pokemon-trainer.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './trainer-profile-page.component.html',
@@ -21,6 +22,7 @@ import { PokemonTrainerService } from 'src/app/core/services/pokemon-trainer.ser
 export class TrainerProfilePageComponent implements OnInit {
   private fb = inject(FormBuilder).nonNullable;
   private pokemonTrainerService = inject(PokemonTrainerService);
+  private router = inject(Router);
 
   separatorKeysCodes: number[] = [ENTER];
   today = DateTime.now();
@@ -115,6 +117,8 @@ export class TrainerProfilePageComponent implements OnInit {
       birthday: formValue.birthday && formValue.birthday.toFormat('yyyy-MM-dd'),
       hobby: formValue.hobby.at(0) as string,
     };
+
+    this.router.navigate(['pokemon-selector']);
   }
 
   addHobby(event: MatChipInputEvent): void {
