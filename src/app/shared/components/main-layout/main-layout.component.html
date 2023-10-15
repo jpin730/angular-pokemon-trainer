@@ -11,7 +11,12 @@
 </header>
 
 <main>
-  <div class="container">
-    <router-outlet />
-  </div>
+  <ng-container *ngIf="loading$ | async; else loader">
+    <app-loader />
+  </ng-container>
+  <ng-template #loader>
+    <div class="container">
+      <router-outlet />
+    </div>
+  </ng-template>
 </main>

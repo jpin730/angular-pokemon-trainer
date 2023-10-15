@@ -16,3 +16,7 @@ main > .container {
   min-height: calc(100vh - $header-height);
   padding: 4rem 0;
 }
+
+main > app-loader {
+  height: calc(100vh - $header-height);
+}
