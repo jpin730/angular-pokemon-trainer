@@ -19,8 +19,8 @@ export class PokemonTrainerService {
     return this.profileSubject.asObservable();
   }
 
-  set profile({ image, ...profile }: TrainerProfile) {
-    this.profileSubject.next({ ...profile, image });
+  set profile(profile: TrainerProfile) {
+    this.profileSubject.next(profile);
   }
 
   getFirstGenerationPokemons(): Observable<Pokemon[]> {

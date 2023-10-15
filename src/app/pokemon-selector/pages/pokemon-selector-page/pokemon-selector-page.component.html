@@ -1,9 +1,20 @@
-<pre>
-    {{ profile$ | async | json }}
-</pre>
+<section class="headline-container">
+  <button
+    mat-icon-button
+    color="primary"
+    class="back-button"
+    (click)="onClickBackButton()"
+  >
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <div>
+    <h1>¡Ya casi términamos!</h1>
+    <p>Revisa la información, y completa lo solicitado.</p>
+  </div>
+</section>
 
 <pre>
-    {{ pokemons$ | async | json }}
+    {{ profile$ | async | json }}
 </pre>
 
 <ng-container *ngIf="profile$ | async as profile">

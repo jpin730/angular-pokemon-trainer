@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map, tap } from 'rxjs';
@@ -13,6 +14,7 @@ export class PokemonSelectorPageComponent implements OnInit {
   private pokemonTrainerService = inject(PokemonTrainerService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private location = inject(Location);
 
   profile$!: Observable<TrainerProfile | null>;
   pokemons$!: Observable<Pokemon[]>;
@@ -34,5 +36,9 @@ export class PokemonSelectorPageComponent implements OnInit {
         }
       }),
     );
+  }
+
+  onClickBackButton() {
+    this.location.back();
   }
 }

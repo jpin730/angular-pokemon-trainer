@@ -6,6 +6,7 @@ import {
   Observable,
   distinctUntilChanged,
   map,
+  merge,
   startWith,
   take,
   tap,
@@ -74,8 +75,25 @@ export class TrainerProfilePageComponent implements OnInit {
       ),
     );
 
-    this.isAdult$ = this.birthdayControl.valueChanges.pipe(
-      startWith<DateTime | ''>(''),
+    this.isAdult$ = merge(
+      this.birthdayControl.valueChanges,
+      this.pokemonTrainerService.profile$.pipe(
+        take(1),
+        map((profile) => {
+          if (!profile) return '';
+
+          const birthday = DateTime.fromISO(profile.birthday);
+
+          this.trainerProfileForm.setValue({
+            ...profile,
+            birthday,
+            hobby: [profile.hobby],
+          });
+
+          return birthday;
+        }),
+      ),
+    ).pipe(
       map(
         (birthday) =>
           birthday !== '' &&
@@ -88,23 +106,6 @@ export class TrainerProfilePageComponent implements OnInit {
           : this.documentControl.removeValidators(Validators.required),
       ),
     );
-
-    this.pokemonTrainerService.profile$.pipe(take(1)).subscribe(
-      (profile) =>
-        profile &&
-        this.trainerProfileForm.setValue(
-          {
-            ...profile,
-            birthday: DateTime.fromISO(profile.birthday),
-            hobby: [profile.hobby],
-          },
-          { emitEvent: false },
-        ),
-    );
-  }
-
-  onLoadImage(imageURL: string) {
-    this.profileImage = imageURL;
   }
 
   submitTrainerProfile() {
