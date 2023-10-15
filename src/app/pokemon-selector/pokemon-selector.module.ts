@@ -7,9 +7,11 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { PokemonSelectorComponent } from './components/pokemon-selector/pokemon-selector.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [PokemonSelectorPageComponent],
+  declarations: [PokemonSelectorPageComponent, PokemonSelectorComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -17,6 +19,7 @@ import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     RouterModule,
     SharedModule,
     NgxMaskPipe,
+    ReactiveFormsModule,
   ],
   providers: [provideNgxMask()],
 })

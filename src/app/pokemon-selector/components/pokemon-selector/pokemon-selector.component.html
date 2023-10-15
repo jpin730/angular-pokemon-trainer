@@ -1,0 +1,32 @@
+<h2>Pokémon</h2>
+
+<p>Selecciona 3 Pokémon para que sean parte de tu equipo</p>
+
+<div>
+  <mat-icon>search</mat-icon>
+  <input
+    type="text"
+    placeholder="Buscar por índice, nombre..."
+    [formControl]="searchValue"
+    name="searchValue"
+  />
+</div>
+
+<div class="pokemon-list">
+  <ng-container *ngFor="let pokemon of filteredPokemons$ | async">
+    <input
+      type="checkbox"
+      [id]="pokemon.id"
+      [name]="pokemon.id"
+      [value]="pokemon.id"
+      [checked]="selectedPokemons.includes(pokemon.id)"
+      [disabled]="disabled && !selectedPokemons.includes(pokemon.id)"
+      (change)="onChangePokemonSelection($event)"
+    />
+    <label [for]="pokemon.id">
+      {{ pokemon.id | number: '3.0' }}
+      {{ pokemon.name | titlecase }}
+    </label>
+    <br />
+  </ng-container>
+</div>

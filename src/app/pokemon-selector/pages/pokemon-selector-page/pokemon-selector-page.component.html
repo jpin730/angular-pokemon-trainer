@@ -13,7 +13,7 @@
   </div>
 </section>
 
-<div class="body-container">
+<section class="body-container">
   <app-trainer-card *ngIf="profile$ | async as profile">
     <div class="card-content">
       <h2>{{ profile.name }}</h2>
@@ -36,4 +36,8 @@
       </div>
     </div>
   </app-trainer-card>
-</div>
+
+  <ng-container *ngIf="pokemons$ | async as pokemons">
+    <app-pokemon-selector [pokemons]="pokemons" />
+  </ng-container>
+</section>

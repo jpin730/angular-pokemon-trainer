@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -8,12 +9,12 @@ import { MatFormFieldDirective } from './directives/mat-form-field.directive';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+
 import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
   MatDateFormats,
 } from '@angular/material/core';
-
 import { LuxonDateModule } from '@angular/material-luxon-adapter';
 
 const directives = [MatErrorDirective, MatFormFieldDirective];
