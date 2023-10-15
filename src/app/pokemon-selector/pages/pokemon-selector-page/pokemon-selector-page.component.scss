@@ -17,7 +17,7 @@
     width: 100%;
   }
 
-  p {
+  .bio p {
     @include setFontStyle($grayDark, 1.5rem, 400, 2rem);
     width: 100%;
     display: flex;

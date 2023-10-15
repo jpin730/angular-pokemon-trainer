@@ -34,11 +34,6 @@ export class PokemonSelectorPageComponent implements OnInit {
 
     this.pokemons$ = this.route.data.pipe(
       map((data) => data['pokemons'] ?? []),
-      tap((pokemons) => {
-        if (pokemons.length === 0) {
-          this.router.navigate(['trainer-profile']);
-        }
-      }),
     );
   }
 

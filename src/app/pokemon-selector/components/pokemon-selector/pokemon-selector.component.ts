@@ -40,6 +40,7 @@ export class PokemonSelectorComponent implements OnInit {
       .pipe(take(1))
       .subscribe((selectedPokemons) => {
         this.selectedPokemons = selectedPokemons;
+        this.disabledCheckbox = this.selectedPokemons.length === 3;
       });
   }
 
@@ -53,7 +54,7 @@ export class PokemonSelectorComponent implements OnInit {
       this.selectedPokemons.splice(index, 1);
     }
 
-    this.disabledCheckbox = this.selectedPokemons.length >= 3;
+    this.disabledCheckbox = this.selectedPokemons.length === 3;
   }
 
   saveSelectedPokemons() {

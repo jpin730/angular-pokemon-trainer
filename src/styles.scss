@@ -118,6 +118,13 @@ button {
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 10px !important;
+
+  &.mdc-button--outlined.mat-primary {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    height: 2rem !important;
+    border-color: $primary-color;
+  }
 }
 
 .app-autocomplete {

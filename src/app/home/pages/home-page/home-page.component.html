@@ -1,3 +1,43 @@
-<pre>
-    {{ selectedPokemons$ | async | json }}
-</pre>
+<ng-container *ngIf="profile$ | async as profile">
+  <section class="home-headline">
+    <h1>¡Hola {{ profile.name }}!</h1>
+    <a mat-stroked-button color="primary" routerLink="/trainer-profile">
+      <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+      <span>Editar perfil</span>
+    </a>
+  </section>
+
+  <section class="body-container">
+    <app-trainer-card *ngIf="profile$ | async as profile">
+      <div class="card-content">
+        <div class="card-title">
+          <p>Entrenador</p>
+          <img
+            priority
+            ngSrc="assets/images/medal-badge.svg"
+            alt="Medal badge"
+            width="63"
+            height="57"
+          />
+        </div>
+        <app-image-viewer [src]="profile.image" />
+        <div class="bio">
+          <p>
+            <strong>Pasatiempo: </strong>
+            <span>{{ profile.hobby }}</span>
+          </p>
+          <p>
+            <strong>Edad: </strong>
+            <span>{{ profile.birthday | age }} años</span>
+          </p>
+          <p *ngIf="!!profile.document">
+            <strong>{{ isAdult ? 'DUI' : 'Carnet de Minoridad' }}: </strong>
+            <span>{{
+              profile.document | mask: (isAdult ? '00000000-0' : 'A*')
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </app-trainer-card>
+  </section>
+</ng-container>

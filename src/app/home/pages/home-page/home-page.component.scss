@@ -1,0 +1,50 @@
+@import 'colors';
+@import 'utils';
+
+.home-headline {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+
+  h1 {
+    @include setFontStyle($black, 2.5rem, 700, 3.75rem);
+  }
+
+  a {
+    width: 8.5rem;
+  }
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 2.5rem;
+
+  .card-title {
+    @include setFontStyle($grayDark, 1.5rem, 500, 2rem);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .bio {
+    width: 100%;
+  }
+
+  .bio p {
+    @include setFontStyle($grayDark, 1.5rem, 400, 2rem);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    > strong {
+      font-weight: 700;
+    }
+  }
+}

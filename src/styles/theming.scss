@@ -23,3 +23,10 @@ $angular-pokemon-trainer-theme: mat.define-light-theme(
 );
 
 @include mat.all-component-themes($angular-pokemon-trainer-theme);
+
+$primary-color: mat.get-color-from-palette(
+  $angular-pokemon-trainer-primary,
+  900
+);
+$accent-color: mat.get-color-from-palette($angular-pokemon-trainer-accent, 400);
+$warn-color: mat.get-color-from-palette($angular-pokemon-trainer-warn);
