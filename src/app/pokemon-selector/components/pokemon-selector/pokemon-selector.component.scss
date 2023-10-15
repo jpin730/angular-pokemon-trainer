@@ -41,9 +41,15 @@ p {
   justify-items: center;
   align-content: start;
   grid-template-columns: repeat(2, 1fr);
-  height: calc(138px * 3);
+  gap: 0.5rem 0;
+  height: calc(138px * 3 + 1rem);
   overflow-y: auto;
   margin-bottom: 3rem;
+
+  > p {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
 
   @include for-sm-up {
     grid-template-columns: repeat(3, 1fr);

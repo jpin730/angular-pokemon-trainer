@@ -1,14 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, startWith } from 'rxjs';
+import { Router } from '@angular/router';
+import { map, startWith, take } from 'rxjs';
 import { Pokemon } from 'src/app/core/interfaces/pokemon';
+import { PokemonTrainerService } from 'src/app/core/services/pokemon-trainer.service';
 
 @Component({
   selector: 'app-pokemon-selector',
   templateUrl: './pokemon-selector.component.html',
   styleUrls: ['./pokemon-selector.component.scss'],
 })
-export class PokemonSelectorComponent {
+export class PokemonSelectorComponent implements OnInit {
+  private pokemonTrainerService = inject(PokemonTrainerService);
+  private router = inject(Router);
+
   @Input() pokemons: Pokemon[] = [];
   selectedPokemons: number[] = [];
   searchValue = new FormControl('', { nonNullable: true });
@@ -30,6 +35,14 @@ export class PokemonSelectorComponent {
   );
   disabledCheckbox = false;
 
+  ngOnInit() {
+    this.pokemonTrainerService.selectedPokemons$
+      .pipe(take(1))
+      .subscribe((selectedPokemons) => {
+        this.selectedPokemons = selectedPokemons;
+      });
+  }
+
   onChangePokemonSelection(event: Event) {
     const { checked, value } = event.target as HTMLInputElement;
 
@@ -41,5 +54,13 @@ export class PokemonSelectorComponent {
     }
 
     this.disabledCheckbox = this.selectedPokemons.length >= 3;
+  }
+
+  saveSelectedPokemons() {
+    if (this.selectedPokemons.length !== 3) return;
+
+    this.pokemonTrainerService.selectedPokemons = this.selectedPokemons;
+
+    this.router.navigate(['home']);
   }
 }
