@@ -1,15 +1,25 @@
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, forkJoin, map, of, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  forkJoin,
+  map,
+  of,
+  tap,
+} from 'rxjs';
 import { TrainerProfile } from '../interfaces/trainer-profile';
 import { HttpClient } from '@angular/common/http';
 import { GetPokemonResponse, Stat } from '../interfaces/poke-api-response';
 import { Pokemon, PokemonStats } from '../interfaces/pokemon';
+import { SnackBarServiceService } from './snack-bar-service.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonTrainerService {
   private http = inject(HttpClient);
+  private snackBarService = inject(SnackBarServiceService);
 
   private profileSubject = new BehaviorSubject<TrainerProfile | null>(null);
   private selectedPokemonsSubject = new BehaviorSubject<number[]>([]);
@@ -36,11 +46,25 @@ export class PokemonTrainerService {
     return forkJoin(
       Array(151)
         .fill(null)
-        .map((_, index) => this.getPokemonById(index + 1)),
+        .map((_, index) => this.getPokemonById(index + 1, false)),
+    ).pipe(
+      map(
+        (pokemons) =>
+          pokemons.filter((pokemon) => {
+            if (pokemon === null) {
+              this.snackBarService.openSnackBar(
+                `Error al cargar algunos o todos pokemons. Intenta de nuevo.`,
+              );
+              return false;
+            }
+
+            return true;
+          }) as Pokemon[],
+      ),
     );
   }
 
-  getPokemonById(id: number): Observable<Pokemon> {
+  getPokemonById(id: number, displayError = true): Observable<Pokemon | null> {
     const pokemon = this.firstGenerationPokemons[id];
 
     return pokemon
@@ -58,6 +82,14 @@ export class PokemonTrainerService {
             tap(
               (pokemon) => (this.firstGenerationPokemons[pokemon.id] = pokemon),
             ),
+            catchError(() => {
+              if (displayError) {
+                this.snackBarService.openSnackBar(
+                  `Error al cargar pokemon con id: "${id}". Intenta de nuevo.`,
+                );
+              }
+              return of(null);
+            }),
           );
   }
 

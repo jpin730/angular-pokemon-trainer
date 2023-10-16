@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {
@@ -45,6 +46,7 @@ export const APP_DATE_FORMATS: MatDateFormats = {
     MatIconModule,
     MatInputModule,
     MatRippleModule,
+    MatSnackBarModule,
     MatTooltipModule,
     LuxonDateModule,
   ],

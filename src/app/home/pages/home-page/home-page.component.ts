@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, forkJoin, switchMap, tap } from 'rxjs';
+import { Observable, forkJoin, map, switchMap, tap } from 'rxjs';
 import { getAge } from 'src/app/core/helpers/get-age';
 import { Pokemon } from 'src/app/core/interfaces/pokemon';
 import { PokemonTrainerService } from 'src/app/core/services/pokemon-trainer.service';
@@ -40,6 +40,10 @@ export class HomePageComponent implements OnInit {
             this.pokemonTrainerService.getPokemonById(id),
           ),
         ),
+      ),
+      map(
+        (selectedPokemons) =>
+          selectedPokemons.filter((pokemon) => !!pokemon) as Pokemon[],
       ),
     );
   }
