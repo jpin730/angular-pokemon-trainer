@@ -6,10 +6,15 @@
   </a>
 </div>
 
-<ngb-carousel [showNavigationArrows]="false">
-  <ng-container *ngFor="let pokemon of pokemons">
-    <ng-template ngbSlide>
-      <app-pokemon-card [pokemon]="pokemon" />
-    </ng-template>
-  </ng-container>
-</ngb-carousel>
+<div
+  (touchstart)="swipe($event, 'start', carousel)"
+  (touchend)="swipe($event, 'end', carousel)"
+>
+  <ngb-carousel [showNavigationArrows]="false" #carousel>
+    <ng-container *ngFor="let pokemon of pokemons">
+      <ng-template ngbSlide>
+        <app-pokemon-card [pokemon]="pokemon" />
+      </ng-template>
+    </ng-container>
+  </ngb-carousel>
+</div>
