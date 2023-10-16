@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -38,6 +40,7 @@ export const APP_DATE_FORMATS: MatDateFormats = {
   declarations: [...directives],
   exports: [
     ...directives,
+    ScrollingModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatChipsModule,

@@ -12,22 +12,24 @@
   />
 </div>
 
-<div class="pokemon-list">
-  <ng-container *ngIf="filteredPokemons$ | async as filteredPokemons">
-    <ng-container *ngIf="filteredPokemons.length > 0; else noPokemons">
+<ng-container *ngIf="filteredPokemons$ | async as filteredPokemons">
+  <ng-container *ngIf="filteredPokemons.length > 0; else noPokemons">
+    <cdk-virtual-scroll-viewport class="pokemon-list" [itemSize]="138 / 3">
       <app-pokemon-checkbox
-        *ngFor="let pokemon of filteredPokemons"
+        *cdkVirtualFor="let pokemon of filteredPokemons"
         [pokemon]="pokemon"
         [disabled]="disabledCheckbox"
         [selectedPokemons]="selectedPokemons"
         (changeSelection)="onChangePokemonSelection($event)"
       />
-    </ng-container>
-    <ng-template #noPokemons>
-      <p>No se encontró ningún Pokémon</p>
-    </ng-template>
+    </cdk-virtual-scroll-viewport>
   </ng-container>
-</div>
+  <ng-template #noPokemons>
+    <div class="pokemon-list">
+      <p>No se encontró ningún Pokémon</p>
+    </div>
+  </ng-template>
+</ng-container>
 
 <button
   mat-flat-button

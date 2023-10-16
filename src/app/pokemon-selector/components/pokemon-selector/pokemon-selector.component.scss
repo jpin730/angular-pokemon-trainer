@@ -40,13 +40,20 @@ p {
 }
 
 .pokemon-list {
+  height: calc(138px * 3 + 1rem);
+  overflow-y: auto;
+  margin-bottom: 3rem;
+
+  > p {
+    text-align: center;
+  }
+}
+
+:host ::ng-deep .cdk-virtual-scroll-content-wrapper {
   display: grid;
   justify-items: center;
   align-content: start;
   gap: 0.5rem 0;
-  height: calc(138px * 3 + 1rem);
-  overflow-y: auto;
-  margin-bottom: 3rem;
   grid-template-columns: 1fr;
 
   @include for-sm-up {
@@ -63,11 +70,6 @@ p {
 
   @include for-xl-up {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  > p {
-    grid-column: 1 / -1;
-    text-align: center;
   }
 }
 
