@@ -1,7 +1,8 @@
 @import 'colors';
 
-.card-container {
+:host {
   background-color: $orange20;
-  width: 24.5rem;
+  width: 100%;
+  max-width: 24.5rem;
   border-radius: 3rem;
 }

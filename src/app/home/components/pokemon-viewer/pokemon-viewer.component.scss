@@ -9,7 +9,10 @@
 .viewer-headline {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.75rem;
+  flex-wrap: wrap;
 
   h2 {
     @include setFontStyle($blue00, 2rem, 400, 3rem);

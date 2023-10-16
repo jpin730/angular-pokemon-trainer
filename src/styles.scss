@@ -33,6 +33,7 @@ button {
 
 .headline-container {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 3.5rem;
 
   > button {
@@ -53,7 +54,7 @@ button {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  gap: 1rem;
+  gap: 3rem 1rem;
 
   @include for-lg-up {
     grid-template-columns: 1fr 1fr;

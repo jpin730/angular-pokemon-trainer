@@ -1,9 +1,18 @@
+@import 'breakpoints';
 @import 'colors';
 
 img {
   background-color: $blue40;
   border-radius: 50%;
-  border: 14px solid $white;
+  border: 7px solid $white;
   display: block;
   margin: 0 auto;
+  width: 12.5rem;
+  height: 12.5rem;
+
+  @include for-sm-up {
+    width: 17rem;
+    height: 17rem;
+    border-width: 14px;
+  }
 }

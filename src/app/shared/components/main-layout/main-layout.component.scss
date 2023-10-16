@@ -47,12 +47,21 @@ header {
       align-items: center;
       gap: 3rem;
     }
+
+    .login :first-child {
+      display: none;
+
+      @include for-sm-up {
+        display: flex;
+      }
+    }
   }
 }
 
 main > .container {
   min-height: calc(100vh - $header-height);
-  padding: 4rem 0;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 main > app-loader {
