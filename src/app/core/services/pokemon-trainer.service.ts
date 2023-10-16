@@ -11,16 +11,8 @@ import { Pokemon, PokemonStats } from '../interfaces/pokemon';
 export class PokemonTrainerService {
   private http = inject(HttpClient);
 
-  // TODO: Remove this mock
-  private profileSubject = new BehaviorSubject<TrainerProfile | null>({
-    name: 'Jaime Pineda',
-    hobby: 'Ver series',
-    birthday: '1995-11-25',
-    document: '123123123',
-    image: '',
-  });
-  // TODO: Remove this mock
-  private selectedPokemonsSubject = new BehaviorSubject<number[]>([1, 2, 3]);
+  private profileSubject = new BehaviorSubject<TrainerProfile | null>(null);
+  private selectedPokemonsSubject = new BehaviorSubject<number[]>([]);
   private apiBaseUrl = 'https://pokeapi.co/api/v2';
   private firstGenerationPokemons: Record<number, Pokemon> = {};
 
@@ -71,6 +63,12 @@ export class PokemonTrainerService {
 
   private getStatsMap(stats: Stat[]): PokemonStats {
     return stats.reduce((acc, { stat, base_stat }) => {
+      if (stat.name.includes('-')) {
+        const [firstWord, secondWord] = stat.name.split('-');
+        stat.name =
+          firstWord + secondWord[0].toUpperCase() + secondWord.slice(1);
+      }
+
       acc[stat.name as keyof PokemonStats] = base_stat;
       return acc;
     }, {} as PokemonStats);

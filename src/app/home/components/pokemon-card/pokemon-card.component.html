@@ -1,0 +1,77 @@
+<div class="card-container">
+  <div class="bio">
+    <img
+      [ngSrc]="pokemon.sprite"
+      [alt]="pokemon.name"
+      height="180"
+      width="180"
+    />
+    <div class="shadow"></div>
+    <h3 class="text-truncate" [matTooltip]="pokemon.name | titlecase">
+      {{ pokemon.name | titlecase }}
+    </h3>
+    <p>{{ pokemon.type | pokemonType }}</p>
+  </div>
+
+  <div class="stats">
+    <div>
+      <p>HP</p>
+      <app-progress-bar
+        width="160px"
+        [matTooltip]="pokemon.hp + '/' + maxStats.hp"
+        [progress]="pokemon.hp | progress: maxStats.hp"
+        [color]="pokemon.type | pokemonColor"
+      />
+    </div>
+
+    <div>
+      <p>Ataque</p>
+      <app-progress-bar
+        width="160px"
+        [matTooltip]="pokemon.attack + '/' + maxStats.attack"
+        [progress]="pokemon.attack | progress: maxStats.attack"
+        [color]="pokemon.type | pokemonColor"
+      />
+    </div>
+
+    <div>
+      <p>Defensa</p>
+      <app-progress-bar
+        width="160px"
+        [matTooltip]="pokemon.defense + '/' + maxStats.defense"
+        [progress]="pokemon.defense | progress: maxStats.defense"
+        [color]="pokemon.type | pokemonColor"
+      />
+    </div>
+
+    <div>
+      <p>Ataque Especial</p>
+      <app-progress-bar
+        width="160px"
+        [matTooltip]="pokemon.specialAttack + '/' + maxStats.specialAttack"
+        [progress]="pokemon.specialAttack | progress: maxStats.specialAttack"
+        [color]="pokemon.type | pokemonColor"
+      />
+    </div>
+
+    <div>
+      <p>Defensa Especial</p>
+      <app-progress-bar
+        width="160px"
+        [matTooltip]="pokemon.specialDefense + '/' + maxStats.specialDefense"
+        [progress]="pokemon.specialDefense | progress: maxStats.specialDefense"
+        [color]="pokemon.type | pokemonColor"
+      />
+    </div>
+
+    <div>
+      <p>Velocidad</p>
+      <app-progress-bar
+        width="160px"
+        [matTooltip]="pokemon.speed + '/' + maxStats.speed"
+        [progress]="pokemon.speed | progress: maxStats.speed"
+        [color]="pokemon.type | pokemonColor"
+      />
+    </div>
+  </div>
+</div>

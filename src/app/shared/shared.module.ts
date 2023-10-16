@@ -9,6 +9,8 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AgePipe } from './pipes/age.pipe';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProgressPipe } from './pipes/progress.pipe';
 
 const components = [
   ImageUploaderComponent,
@@ -16,9 +18,10 @@ const components = [
   MainLayoutComponent,
   TrainerCardComponent,
   LoaderComponent,
+  ProgressBarComponent,
 ];
 
-const pipes = [AgePipe];
+const pipes = [AgePipe, ProgressPipe];
 
 @NgModule({
   declarations: [...components, ...pipes],

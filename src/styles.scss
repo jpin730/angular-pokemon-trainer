@@ -31,32 +31,6 @@ button {
   font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  width: 100%;
-  padding: 0 0.75rem;
-  margin: 0 auto;
-
-  @include for-sm-up {
-    max-width: 540px;
-  }
-
-  @include for-md-up {
-    max-width: 720px;
-  }
-
-  @include for-lg-up {
-    max-width: 960px;
-  }
-
-  @include for-xl-up {
-    max-width: 1140px;
-  }
-
-  @include for-xxl-up {
-    max-width: 1320px;
-  }
-}
-
 .headline-container {
   display: flex;
   margin-bottom: 3.5rem;

@@ -39,5 +39,7 @@
         </div>
       </div>
     </app-trainer-card>
+
+    <app-pokemon-viewer [pokemons]="(selectedPokemons$ | async) ?? []" />
   </section>
 </ng-container>

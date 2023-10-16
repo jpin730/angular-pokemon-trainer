@@ -1,0 +1,11 @@
+<div class="viewer-headline">
+  <h2>Mis Pokémon</h2>
+  <a mat-stroked-button color="primary" routerLink="/pokemon-selector">
+    <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+    <span>Editar</span>
+  </a>
+</div>
+
+<div class="cards-container">
+  <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon" />
+</div>

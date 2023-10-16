@@ -19,16 +19,21 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.profile$ = this.pokemonTrainerService.profile$.pipe(
-      tap(
-        (profile) =>
-          (this.isAdult = !!profile && getAge(profile.birthday) >= 18),
-      ),
+      tap((profile) => {
+        if (!profile) {
+          this.router.navigate(['trainer-profile']);
+          return;
+        }
+
+        this.isAdult = getAge(profile.birthday) >= 18;
+      }),
     );
     this.selectedPokemons$ = this.pokemonTrainerService.selectedPokemons$.pipe(
-      tap((selectedPokemons) => {
-        if (selectedPokemons.length !== 3)
-          this.router.navigate(['pokemon-selector']);
-      }),
+      tap(
+        (selectedPokemons) =>
+          selectedPokemons.length !== 3 &&
+          this.router.navigate(['pokemon-selector']),
+      ),
       switchMap((selectedPokemons) =>
         forkJoin(
           selectedPokemons.map((id) =>

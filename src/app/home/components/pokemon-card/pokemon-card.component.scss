@@ -1,0 +1,66 @@
+@import 'colors';
+@import 'utils';
+
+.card-container {
+  width: 100%;
+  background-color: $gray10;
+  border-radius: 15px;
+  padding: 2rem;
+  padding-left: 1rem;
+  display: flex;
+
+  height: 20rem;
+  gap: 1rem;
+
+  .bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+
+    .shadow {
+      position: absolute;
+      bottom: 50px;
+      left: 35px;
+      width: 202.89px;
+      height: 66.57px;
+      z-index: -1;
+      rotate: -7.71deg;
+      background: radial-gradient(
+        32.69% 42.67% at 37.93% 42.67%,
+        rgba(0, 0, 0, 0.34) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    h3 {
+      @include setFontStyle($black, 2rem, 700, 2.75rem);
+    }
+
+    p {
+      @include setFontStyle($black, 1.1rem, 400, 1.75rem);
+    }
+  }
+
+  .stats {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    p {
+      @include setFontStyle($grayDark, 1.25rem, 400, 2rem);
+    }
+  }
+}
