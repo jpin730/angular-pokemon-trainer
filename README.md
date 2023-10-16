@@ -21,3 +21,7 @@ Run `ng build` or `npm run build` to build the project. The build artifacts will
 Run `docker-compose up -d` to build and serve (Nginx) the project in production mode with Docker. The app will be served in port `4200`.
 
 Run `docker-compose down` to stop serving app with Docker.
+
+## Online app
+
+<https://angular-pokemon-trainer-jpin730.vercel.app>
