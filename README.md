@@ -15,3 +15,9 @@ Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:42
 ## Build
 
 Run `ng build` or `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Dockerize
+
+Run `docker-compose up -d` to build and serve (Nginx) the project in production mode with Docker. The app will be served in port `4200`.
+
+Run `docker-compose down` to stop serving app with Docker.
