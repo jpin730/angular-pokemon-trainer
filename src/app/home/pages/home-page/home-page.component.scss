@@ -46,7 +46,7 @@
     @include setFontStyle($grayDark, 1.5rem, 400, 2rem);
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    gap: 0.5rem;
     justify-content: space-between;
     margin-bottom: 0.5rem;
 

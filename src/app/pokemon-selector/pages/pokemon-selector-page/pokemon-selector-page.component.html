@@ -21,17 +21,26 @@
       <div class="bio">
         <p>
           <strong>Pasatiempo: </strong>
-          <span>{{ profile.hobby }}</span>
+          <span class="text-truncate" [matTooltip]="profile.hobby">{{
+            profile.hobby
+          }}</span>
         </p>
         <p>
           <strong>Edad: </strong>
-          <span>{{ profile.birthday | age }} años</span>
+          <span class="text-truncate" [matTooltip]="profile.birthday | age"
+            >{{ profile.birthday | age }} años</span
+          >
         </p>
         <p *ngIf="!!profile.document">
           <strong>{{ isAdult ? 'DUI' : 'Carnet de Minoridad' }}: </strong>
-          <span>{{
-            profile.document | mask: (isAdult ? '00000000-0' : 'A*')
-          }}</span>
+          <span
+            class="text-truncate"
+            [matTooltip]="
+              profile.document | mask: (isAdult ? '00000000-0' : 'A*')
+            "
+          >
+            {{ profile.document | mask: (isAdult ? '00000000-0' : 'A*') }}
+          </span>
         </p>
       </div>
     </div>
