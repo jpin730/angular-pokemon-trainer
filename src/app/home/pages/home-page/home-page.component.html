@@ -23,19 +23,26 @@
         <app-image-viewer [src]="profile.image" />
         <div class="bio">
           <p>
-            <strong>Pasatiempo: </strong>
-            <span class="text-truncate" [matTooltip]="profile.hobby">{{
-              profile.hobby
-            }}</span>
+            <strong class="text-truncate" matTooltip="Pasatiempo">
+              Pasatiempo:
+            </strong>
+            <span class="text-truncate" [matTooltip]="profile.hobby">
+              {{ profile.hobby }}
+            </span>
           </p>
           <p>
-            <strong>Edad: </strong>
+            <strong class="text-truncate" matTooltip="Edad">Edad: </strong>
             <span class="text-truncate" [matTooltip]="profile.birthday | age"
               >{{ profile.birthday | age }} años</span
             >
           </p>
           <p *ngIf="!!profile.document">
-            <strong>{{ isAdult ? 'DUI' : 'Carnet de Minoridad' }}: </strong>
+            <strong
+              class="text-truncate"
+              [matTooltip]="isAdult ? 'DUI' : 'Carnet de Minoridad'"
+            >
+              {{ isAdult ? 'DUI' : 'Carnet de Minoridad' }}:
+            </strong>
             <span
               class="text-truncate"
               [matTooltip]="
