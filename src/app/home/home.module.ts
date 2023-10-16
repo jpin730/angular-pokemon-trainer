@@ -10,6 +10,7 @@ import { PokemonViewerComponent } from './components/pokemon-viewer/pokemon-view
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { PokemonColorPipe } from './pipes/pokemon-color.pipe';
 import { PokemonTypePipe } from './pipes/pokemon-type.pipe';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PokemonTypePipe } from './pipes/pokemon-type.pipe';
     SharedModule,
     NgxMaskPipe,
     NgOptimizedImage,
+    NgbCarouselModule,
   ],
   providers: [provideNgxMask()],
 })

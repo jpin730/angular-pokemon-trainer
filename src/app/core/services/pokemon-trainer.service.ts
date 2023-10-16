@@ -21,16 +21,8 @@ export class PokemonTrainerService {
   private http = inject(HttpClient);
   private snackBarService = inject(SnackBarServiceService);
 
-  private profileSubject = new BehaviorSubject<TrainerProfile | null>({
-    name: 'Jaime Pineda',
-    hobby: 'Ver series',
-    birthday: '1995-11-25',
-    document: '123123123',
-    image: '',
-  });
-  private selectedPokemonsSubject = new BehaviorSubject<number[]>([
-    70, 91, 100,
-  ]);
+  private profileSubject = new BehaviorSubject<TrainerProfile | null>(null);
+  private selectedPokemonsSubject = new BehaviorSubject<number[]>([]);
   private apiBaseUrl = 'https://pokeapi.co/api/v2';
   private firstGenerationPokemons: Record<number, Pokemon> = {};
 

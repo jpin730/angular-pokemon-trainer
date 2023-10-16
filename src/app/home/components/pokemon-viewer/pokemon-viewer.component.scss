@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'theming';
 @import 'utils';
 
 :host {
@@ -23,10 +24,20 @@
   }
 }
 
-.cards-container {
-  height: 30rem;
-  overflow-x: auto;
-  display: flex;
+:host ::ng-deep .carousel {
+  display: flex !important;
   flex-direction: column;
-  gap: 1.75rem;
+
+  &-inner {
+    order: -1;
+  }
+
+  &-indicators {
+    position: relative;
+    margin: 0;
+
+    [data-bs-target] {
+      background-color: $primary-color;
+    }
+  }
 }

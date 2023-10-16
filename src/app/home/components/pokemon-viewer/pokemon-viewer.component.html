@@ -6,6 +6,10 @@
   </a>
 </div>
 
-<div class="cards-container">
-  <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon" />
-</div>
+<ngb-carousel [showNavigationArrows]="false">
+  <ng-container *ngFor="let pokemon of pokemons">
+    <ng-template ngbSlide>
+      <app-pokemon-card [pokemon]="pokemon" />
+    </ng-template>
+  </ng-container>
+</ngb-carousel>

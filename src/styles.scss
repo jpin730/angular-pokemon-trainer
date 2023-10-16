@@ -1,3 +1,5 @@
+@import 'bootstrap/scss/bootstrap';
+
 @import 'breakpoints';
 @import 'colors';
 @import 'theming';
@@ -89,14 +91,14 @@ button {
 
 .mdc-button {
   height: 3rem !important;
-  letter-spacing: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+  letter-spacing: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
   border-radius: 10px !important;
 
   &.mdc-button--outlined.mat-primary {
-    font-size: 0.75rem;
-    line-height: 1.5rem;
+    font-size: 0.75rem !important;
+    line-height: 1.5rem !important;
     height: 2rem !important;
     border-color: $primary-color;
   }
@@ -122,3 +124,5 @@ button {
     }
   }
 }
+
+/* Importing Bootstrap SCSS file. */

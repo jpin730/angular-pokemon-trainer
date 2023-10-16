@@ -40,7 +40,8 @@
     position: relative;
     z-index: 1;
 
-    .shadow {
+    &::after {
+      content: '';
       position: absolute;
       bottom: 50px;
       left: 50%;
