@@ -8,8 +8,8 @@
     <mat-icon>arrow_back_ios</mat-icon>
   </button>
   <div>
-    <h1>¡Ya casi términamos!</h1>
-    <p>Revisa la información, y completa lo solicitado.</p>
+    <h1>We're almost done!</h1>
+    <p>Review the information and complete what is requested.</p>
   </div>
 </section>
 
@@ -20,25 +20,25 @@
       <app-image-viewer [src]="profile.image" />
       <div class="bio">
         <p>
-          <strong class="text-truncate" matTooltip="Pasatiempo">
-            Pasatiempo:
-          </strong>
+          <strong class="text-truncate" matTooltip="Hobby"> Hobby: </strong>
           <span class="text-truncate" [matTooltip]="profile.hobby">
             {{ profile.hobby }}
           </span>
         </p>
         <p>
-          <strong class="text-truncate" matTooltip="Edad">Edad: </strong>
-          <span class="text-truncate" [matTooltip]="profile.birthday | age"
-            >{{ profile.birthday | age }} años</span
+          <strong class="text-truncate" matTooltip="Age">Age: </strong>
+          <span
+            class="text-truncate"
+            [matTooltip]="(profile.birthday | age) + ' years'"
+            >{{ profile.birthday | age }} years</span
           >
         </p>
         <p *ngIf="!!profile.document">
           <strong
             class="text-truncate"
-            [matTooltip]="isAdult ? 'DUI' : 'Carnet de Minoridad'"
+            [matTooltip]="isAdult ? 'ID Number' : 'School ID'"
           >
-            {{ isAdult ? 'DUI' : 'Carnet de Minoridad' }}:
+            {{ isAdult ? 'ID Number' : 'School ID' }}:
           </strong>
           <span
             class="text-truncate"

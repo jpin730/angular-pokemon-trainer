@@ -40,12 +40,11 @@ export class TrainerProfilePageComponent implements OnInit {
   filteredHobbies$!: Observable<string[]>;
   isAdult$!: Observable<boolean>;
   hobbyList: string[] = [
-    'Jugar Fútbol',
-    'Jugar Basketball',
-    'Jugar Tennis',
-    'Jugar Voleibol',
-    'Jugar Fifa',
-    'Jugar Videojuegos',
+    'Play Soccer',
+    'Play Basketball',
+    'Play Tennis',
+    'Play Volleyball',
+    'Play Video Games',
   ];
 
   get hobbyControl() {

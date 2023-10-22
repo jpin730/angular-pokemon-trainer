@@ -1,12 +1,12 @@
-<h2>Pokémon</h2>
+<h2>Pokemon</h2>
 
-<p>Selecciona 3 Pokémon para que sean parte de tu equipo</p>
+<p>Select 3 Pokemon to be part of your team</p>
 
 <div class="search-input">
   <mat-icon color="primary">search</mat-icon>
   <input
     type="text"
-    placeholder="Buscar por índice, nombre..."
+    placeholder="Search by id or name..."
     [formControl]="searchValue"
     name="searchValue"
   />
@@ -26,7 +26,7 @@
   </ng-container>
   <ng-template #noPokemons>
     <div class="pokemon-list">
-      <p>No se encontró ningún Pokémon</p>
+      <p>No Pokemon was found</p>
     </div>
   </ng-template>
 </ng-container>
@@ -38,5 +38,5 @@
   [disabled]="!disabledCheckbox"
   (click)="saveSelectedPokemons()"
 >
-  Guardar
+  Save
 </button>

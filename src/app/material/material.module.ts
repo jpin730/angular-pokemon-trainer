@@ -29,9 +29,9 @@ export const APP_DATE_FORMATS: MatDateFormats = {
     dateInput: 'yyyy-MM-dd',
   },
   display: {
-    dateInput: 'dd/MMM/yyyy',
+    dateInput: 'MMM dd, yyyy',
     monthYearLabel: 'MMMM yyyy',
-    dateA11yLabel: 'dd/MMM/yyyy',
+    dateA11yLabel: 'MMM ',
     monthYearA11yLabel: 'MMMM yyyy',
   },
 };
@@ -54,7 +54,7 @@ export const APP_DATE_FORMATS: MatDateFormats = {
     LuxonDateModule,
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'es' },
+    { provide: MAT_DATE_LOCALE, useValue: 'en' },
     { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
   ],
 })

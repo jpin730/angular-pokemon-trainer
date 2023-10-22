@@ -3,33 +3,33 @@
     <mat-icon>arrow_back_ios</mat-icon>
   </a>
   <div>
-    <h1>¡Hola! Configuremos tu perfil</h1>
-    <p>Queremos conocerte mejor.</p>
+    <h1>Hi! Let's set up your profile</h1>
+    <p>We want to get to know you better.</p>
   </div>
 </section>
 
 <section class="body-container">
   <app-trainer-card>
     <div class="card-content">
-      <p>Imagen perfil</p>
+      <p>Profile image</p>
       <app-image-viewer [src]="profileImage" />
       <app-image-uploader (imageLoaded)="profileImage = $event" />
     </div>
   </app-trainer-card>
 
   <form [formGroup]="trainerProfileForm" (ngSubmit)="submitTrainerProfile()">
-    <h2>Tu información</h2>
-    <p>Completa la siguiente información para completar tu perfil</p>
+    <h2>Your information</h2>
+    <p>Fill in the following information to complete your profile</p>
 
     <div class="form-controls">
       <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
+        <mat-label>Name</mat-label>
         <input matInput formControlName="name" />
         <mat-error />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Pasatiempo favorito</mat-label>
+        <mat-label>Favorite hobby</mat-label>
         <mat-chip-grid #chipGrid [formControl]="hobbyControl">
           <mat-chip-row
             *ngIf="hobbyControl.value.at(0) as hobby"
@@ -70,7 +70,7 @@
         (click)="picker.open()"
         class="datepicker"
       >
-        <mat-label>Cumpleaños</mat-label>
+        <mat-label>Birthday</mat-label>
         <input
           readonly
           matInput
@@ -91,10 +91,10 @@
       <mat-form-field appearance="outline">
         <mat-label>{{
           (isAdult$ | async)
-            ? 'DUI'
+            ? 'ID Number'
             : birthdayControl.valid
-            ? 'Carnet de Minoridad'
-            : 'Documento'
+            ? 'School ID'
+            : 'Document'
         }}</mat-label>
         <input
           matInput
@@ -111,7 +111,7 @@
       type="submit"
       [disabled]="trainerProfileForm.invalid"
     >
-      Continuar
+      Continue
     </button>
   </form>
 </section>

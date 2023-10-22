@@ -19,10 +19,10 @@ export class MatErrorDirective {
 
     switch (error) {
       case 'required':
-        return 'Campo es requerido';
+        return 'Field is required';
 
       case 'mask':
-        return 'Campo no cumple con el formato';
+        return 'Field does not match the format';
 
       default:
         return '';

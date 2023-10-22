@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'pokemonType',
 })
 export class PokemonTypePipe implements PipeTransform {
-  private pokemonTypeInSpanish: Record<string, string> = {
+  private pokemonTypeSpanish: Record<string, string> = {
     bug: 'Bicho',
     dark: 'Siniestro',
     dragon: 'Dragón',
@@ -27,10 +27,38 @@ export class PokemonTypePipe implements PipeTransform {
     water: 'Agua',
   };
 
-  transform(value: string): string {
+  private pokemonTypeEnglish: Record<string, string> = {
+    bug: 'Bug',
+    dark: 'Dark',
+    dragon: 'Dragon',
+    electric: 'Electric',
+    fairy: 'Fairy',
+    fighting: 'Fighting',
+    fire: 'Fire',
+    flying: 'Flying',
+    ghost: 'Ghost',
+    grass: 'Grass',
+    ground: 'Ground',
+    ice: 'Ice',
+    normal: 'Normal',
+    poison: 'Poison',
+    psychic: 'Psychic',
+    rock: 'Rock',
+    shadow: 'Shadow',
+    steel: 'Steel',
+    unknown: 'Unknown',
+    water: 'Water',
+  };
+
+  transform(value: string, lang: 'en' | 'es' = 'en'): string {
     return value
       .split('/')
-      .map((type) => this.pokemonTypeInSpanish[type] ?? type)
+      .map(
+        (type) =>
+          (lang === 'en'
+            ? this.pokemonTypeEnglish[type]
+            : this.pokemonTypeSpanish[type]) ?? type,
+      )
       .join('/');
   }
 }
